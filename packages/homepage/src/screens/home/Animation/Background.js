@@ -48,7 +48,7 @@ export default class Background extends React.PureComponent {
       <Container
         style={{
           backgroundColor:
-            this.colors[template.name] || template.color.clearer(0.97)(),
+            this.colors[template.name] || template.color.clearer(0.97),
         }}
       >
         <canvas

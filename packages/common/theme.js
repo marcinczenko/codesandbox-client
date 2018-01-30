@@ -21,13 +21,6 @@ const colorMethods = [
 ];
 
 /**
- * Takes a selector that returns a color string and returns new decorated selector that calls the
- * original function to get the color and then modifies that color, ultimately returning another
- * color string.
- */
-const addModifier = (fn, method, ...modifierArgs) => (...args) =>
-  new Color(fn(...args))[method](...modifierArgs).rgbString();
-/**
  * Add useful methods directly to selector function, as well as put an rgbString() call at the end
  * @param selector
  */
@@ -35,7 +28,7 @@ export const decorateSelector = selector => {
   // add member functions to our selector
   colorMethods.forEach(method => {
     selector[method] = memoize((...args) =>
-      decorateSelector(addModifier(selector, method, ...args))
+      new Color(selector(...args))[method](...args).rgbString()
     );
   });
   return selector;

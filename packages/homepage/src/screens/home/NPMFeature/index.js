@@ -88,7 +88,7 @@ const Link = styled.a`
   text-decoration: none;
 
   &:hover {
-    color: ${({ theme }) => theme.secondary.lighten(0.2)()};
+    color: ${({ theme }) => theme.secondary.lighten(0.2)};
   }
 `;
 

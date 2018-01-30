@@ -14,8 +14,8 @@ const Container = styled.div`
   position: fixed;
 
   font-size: 0.875rem;
-  background-color: ${() => theme.background2.lighten(0.2)()};
-  color: ${() => theme.background2.lighten(3)()};
+  background-color: ${() => theme.background2.lighten(0.2)};
+  color: ${() => theme.background2.lighten(3)};
   box-shadow: -1px 3px 4px rgba(0, 0, 0, 0.3);
   border-radius: 3px;
   z-index: 20;
@@ -44,7 +44,7 @@ const Item = styled.div`
 
   &:hover {
     color: ${props => (props.color ? props.color : theme.secondary())};
-    background-color: ${() => theme.background2.lighten(0.3)()};
+    background-color: ${() => theme.background2.lighten(0.3)};
     border-left-color: ${props =>
       props.color ? props.color : theme.secondary()};
   }

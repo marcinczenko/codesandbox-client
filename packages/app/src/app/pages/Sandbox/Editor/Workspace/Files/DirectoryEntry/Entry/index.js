@@ -146,7 +146,7 @@ class Entry extends React.PureComponent<Props, State> {
       deleteEntry && {
         title: 'Delete',
         action: this.delete,
-        color: theme.red.darken(0.2)(),
+        color: theme.red.darken(0.2),
         icon: DeleteIcon,
       },
     ].filter(x => x);

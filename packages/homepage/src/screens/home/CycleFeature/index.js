@@ -208,7 +208,7 @@ export default class CycleFeatures extends React.PureComponent {
         position: 'absolute',
       })
       .set('#main-cube-side', {
-        backgroundColor: theme.secondary.clearer(0.2)(),
+        backgroundColor: theme.secondary.clearer(0.2),
         zIndex: 1,
         boxShadow: `0px 0px 150px ${theme.secondary()}`,
       })
@@ -253,7 +253,7 @@ export default class CycleFeatures extends React.PureComponent {
         },
         'step1'
       )
-      .set('#main-cube-side', { backgroundColor: theme.primary.clearer(0.2)() })
+      .set('#main-cube-side', { backgroundColor: theme.primary.clearer(0.2) })
       .to('#addition-cube', 0.6, {
         ease: Power2.easeOut,
         y: -45,
@@ -312,7 +312,7 @@ export default class CycleFeatures extends React.PureComponent {
         '-=0.2'
       )
       .to('#main-cube-side', 0.7, {
-        backgroundColor: theme.secondary.clearer(0.2)(),
+        backgroundColor: theme.secondary.clearer(0.2),
         boxShadow: `0px 0px 150px ${theme.secondary()}`,
         ease: Power2.easeInOut,
       })

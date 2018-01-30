@@ -32,9 +32,9 @@ export const getContainerStyles = props => {
         props.active || props.editing
           ? ''
           : `
-        background-color: ${color.clearer(0.9)()};
-        color: ${theme.background.lighten(5)()};
-        border-color: ${color.darken(0.4)()};
+        background-color: ${color.clearer(0.9)};
+        color: ${theme.background.lighten(5)};
+        border-color: ${color.darken(0.4)};
       `
       }
 
@@ -47,13 +47,13 @@ export const getContainerStyles = props => {
   if (props.editing) {
     styles += `
       color: ${theme.white()};
-      background-color: ${color.clearer(0.9)()};
+      background-color: ${color.clearer(0.9)};
     `;
 
     if (props.nameValidationError) {
       styles += `
         border-color: ${theme.red()} !important;
-        background-color: ${theme.redBackground.clearer(0.4)()} !important;
+        background-color: ${theme.redBackground.clearer(0.4)} !important;
       `;
     }
   }
@@ -62,7 +62,7 @@ export const getContainerStyles = props => {
     styles += `
       color: ${theme.white()} !important;
       border-color: ${color()} !important;
-      background-color: ${color.lighten(0.1).clearer(0.8)()} !important;
+      background-color: ${color.lighten(0.1).clearer(0.8)} !important;
     `;
   }
 

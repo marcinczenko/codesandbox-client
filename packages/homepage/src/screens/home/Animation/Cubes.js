@@ -51,7 +51,7 @@ const SmallCube = styled(
 const OFFSETS = [84, 32, 54, 110];
 
 // eslint-disable-next-line react/no-multi-comp
-export default class Cubes extends React.PureComponent {
+export default class Cubes extends React.Component {
   els = {};
 
   constructor(props) {
@@ -156,7 +156,7 @@ export default class Cubes extends React.PureComponent {
   growCube = (template, canvas) => {
     const el = this.els[template.name];
     const rgb = template.color
-      .lighten(0)()
+      .lighten(0)
       .match(/rgb\((.*)\)/)[1]
       .split(',');
     const { x, y } = this.state.templates[

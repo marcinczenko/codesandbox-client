@@ -5,7 +5,7 @@ import styled, { css, keyframes } from 'styled-components';
 import theme from 'common/theme';
 
 const getBackgroundColor = ({ disabled, red, secondary }) => {
-  if (disabled) return `background: ${theme.background2.darken(0.1)()}`;
+  if (disabled) return `background: ${theme.background2.darken(0.1)}`;
   if (secondary) return `background: #3A4B5D`;
   if (red)
     return `background-image: linear-gradient(270deg, #F27777, #400000);`;
@@ -13,7 +13,7 @@ const getBackgroundColor = ({ disabled, red, secondary }) => {
 };
 
 const getColor = ({ disabled, secondary }) => {
-  if (disabled) return theme.background2.lighten(1.5)();
+  if (disabled) return theme.background2.lighten(1.5);
   if (secondary) return `#56a0d6`;
   return 'white';
 };

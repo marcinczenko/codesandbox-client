@@ -21,13 +21,13 @@ const Container = styled.div`
 
   border-left: 2px solid transparent;
   border-color: ${props => {
-    if (props.type === 'error') return theme.red.darken(0.2)();
+    if (props.type === 'error') return theme.red.darken(0.2);
     if (props.type === 'warning') return theme.primary.darken(0.2);
     if (props.type === 'success') return theme.green();
     return theme.secondary();
   }};
 
-  background-color: ${theme.background2.darken(0.2)()};
+  background-color: ${theme.background2.darken(0.2)};
 `;
 
 const Content = styled.div`

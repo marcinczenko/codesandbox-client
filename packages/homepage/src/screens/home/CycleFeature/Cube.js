@@ -60,37 +60,37 @@ export default class GlowCube extends React.Component<Props> {
           size={size}
         >
           <Side
-            style={{ boxShadow: `0px 0px 100px ${color.clearer(0.3)()}` }}
+            style={{ boxShadow: `0px 0px 100px ${color.clearer(0.3)}` }}
             rotate="rotateX(90deg)"
             size={size}
             id={`${id}-side`}
           />
           <Side
-            style={{ boxShadow: `0px 0px 150px ${color.clearer(0.3)()}` }}
+            style={{ boxShadow: `0px 0px 150px ${color.clearer(0.3)}` }}
             rotate="rotateX(-90deg)"
             size={size}
             id={`${id}-side`}
           />
           <Side
-            style={{ boxShadow: `0px 0px 150px ${color.clearer(0.3)()}` }}
+            style={{ boxShadow: `0px 0px 150px ${color.clearer(0.3)}` }}
             rotate="rotateY(0deg)"
             size={size}
             id={`${id}-side`}
           />
           <Side
-            style={{ boxShadow: `0px 0px 150px ${color.clearer(0.3)()}` }}
+            style={{ boxShadow: `0px 0px 150px ${color.clearer(0.3)}` }}
             rotate="rotateY(-180deg)"
             size={size}
             id={`${id}-side`}
           />
           <Side
-            style={{ boxShadow: `0px 0px 150px ${color.clearer(0.3)()}` }}
+            style={{ boxShadow: `0px 0px 150px ${color.clearer(0.3)}` }}
             rotate="rotateY(-90deg)"
             size={size}
             id={`${id}-side`}
           />
           <Side
-            style={{ boxShadow: `0px 0px 150px ${color.clearer(0.3)()}` }}
+            style={{ boxShadow: `0px 0px 150px ${color.clearer(0.3)}` }}
             rotate="rotateY(90deg)"
             size={size}
             id={`${id}-side`}

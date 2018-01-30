@@ -147,7 +147,7 @@ export default class SearchDependencies extends React.PureComponent {
         <div
           style={{
             height: 40,
-            backgroundColor: theme.background2.darken(0.2)(),
+            backgroundColor: theme.background2.darken(0.2),
           }}
         >
           <PoweredBy />

@@ -6,10 +6,10 @@ describe('theme', () => {
   });
 
   it('can adjust colors', () => {
-    expect(theme.background.darken(0.5)()).toMatchSnapshot();
+    expect(theme.background.darken(0.5)).toMatchSnapshot();
   });
 
   it('can chain color adjustments', () => {
-    expect(theme.background.darken(0.5).lighten(0.2)()).toMatchSnapshot();
+    expect(theme.background.darken(0.5).lighten(0.2)).toMatchSnapshot();
   });
 });

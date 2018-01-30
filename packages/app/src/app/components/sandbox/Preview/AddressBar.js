@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   position: relative;
-  color: ${props => props.theme.gray.darken(0.2)()};
+  color: ${props => props.theme.gray.darken(0.2)};
   vertical-align: middle;
   font-size: 1rem;
 `;

@@ -118,7 +118,7 @@ const CodeContainer = styled.div`
   }
 
   span.cm-variable {
-    color: ${theme.primary.darken(0.1)()};
+    color: ${theme.primary.darken(0.1)};
   }
   span.cm-variable-2 {
     color: ${theme.secondary()};

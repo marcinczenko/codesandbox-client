@@ -21,25 +21,27 @@ const styles = props =>
   box-sizing: inherit;
   border-bottom: 2px solid transparent;
   z-index: 1;
-  ${props.highlight
-    ? `
-      background-color: ${props.theme.secondary.darken(0.1)()};
+  ${
+    props.highlight
+      ? `
+      background-color: ${props.theme.secondary.darken(0.1)};
       color: white;
-      border-bottom: 1px solid ${props.theme.secondary.darken(0.1)()};
+      border-bottom: 1px solid ${props.theme.secondary.darken(0.1)};
 
       &:hover {
-        background-color: ${props.theme.secondary.darken(0.2)()};
+        background-color: ${props.theme.secondary.darken(0.2)};
       }
   `
-    : `
+      : `
 
     &:hover {
       color: rgba(255,255,255, 1);
-      border-color: ${props.hideBottomHighlight
-        ? 'transparent'
-        : props.theme.secondary()}
+      border-color: ${
+        props.hideBottomHighlight ? 'transparent' : props.theme.secondary()
+      }
     }
-  `}
+  `
+  }
 `;
 
 const Title = styled.span`
@@ -52,11 +54,17 @@ const Title = styled.span`
   }`};
 `;
 
-const Action = styled.div`${styles};`;
+const Action = styled.div`
+  ${styles};
+`;
 
-const ActionLink = styled(Link)`${styles} text-decoration: none;`;
+const ActionLink = styled(Link)`
+  ${styles} text-decoration: none;
+`;
 
-const ActionA = styled.a`${styles} text-decoration: none;`;
+const ActionA = styled.a`
+  ${styles} text-decoration: none;
+`;
 
 const ActionTooltip = styled(Tooltip)`
   ${styles} ${props =>

@@ -5,8 +5,8 @@ import media from '../utils/media';
 export const Background = styled.div`
   background-image: linear-gradient(
     45deg,
-    ${({ theme }) => theme.secondary.darken(0.1)()} 0%,
-    ${({ theme }) => theme.secondary.darken(0.3)()} 100%
+    ${({ theme }) => theme.secondary.darken(0.1)} 0%,
+    ${({ theme }) => theme.secondary.darken(0.3)} 100%
   );
 `;
 
