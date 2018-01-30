@@ -1,32 +1,34 @@
-import styled, { css } from 'styled-components';
+import glamorous from 'glamorous';
 
-const getGradient = color => css`linear-gradient(
+const getGradient = color => `linear-gradient(
   45deg,
-  ${color},
+  ${color()},
   ${color.darken(0.2)}
 )`;
 
-export default styled.a`
-  position: relative;
-  background: ${({ color, secondary }) =>
-    secondary ? '' : getGradient(color)};
-  border: none;
-  outline: none;
-  padding: 0.75em 1.5em;
-  font-weight: 400;
-  border-radius: 4px;
-  color: white;
-  text-align: center;
-  box-shadow: 0 0 100px ${props => props.color.clearer(0.3)};
-  text-transform: uppercase;
+const Button = glamorous.a(({ color, secondary }) => {
+  const primaryStyle = {
+    position: 'relative',
+    background: secondary ? '' : getGradient(color),
+    border: 'none',
+    outline: 'none',
+    padding: '0.75em 1.5em',
+    fontWeight: 400,
+    borderRadius: '4px',
+    color: 'white',
+    textAlign: 'center',
+    boxShadow: `0 0 100px ${color.clearer(0.3)}`,
+    textTransform: 'uppercase',
+    textDecoration: 'none',
+  };
 
-  ${({ color, secondary }) =>
-    secondary &&
-    css`
-      color: ${color};
-      text-shadow: 0 0 50px ${props => props.color.clearer(0.3)};
-      box-shadow: none;
-    `};
+  const secondaryStyle = {
+    color: `${color()}`,
+    textShadow: `0 0 50px ${color.clearer(0.3)}`,
+    boxShadow: 'none',
+  };
 
-  text-decoration: none;
-`;
+  return secondary ? { ...primaryStyle, ...secondaryStyle } : primaryStyle;
+});
+
+export default Button;
