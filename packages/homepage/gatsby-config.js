@@ -61,6 +61,7 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-glamorous`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,

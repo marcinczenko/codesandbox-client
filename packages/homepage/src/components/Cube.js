@@ -1,49 +1,76 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import { css } from 'glamor';
+import glamorous from 'glamorous';
 
-const Cube = styled.div`
-  width: ${props => props.size + 1}px;
-  height: ${props => props.size + 1}px;
-
-  * {
-    position: absolute;
-    width: ${props => props.size + 1}px;
-    height: ${props => props.size + 1}px;
-  }
-`;
-
-const getAnimation = (offset: number = 0) => {
-  return keyframes`
-  0% {
-    transform: rotateY(${45 + offset}deg) rotateX(${-37.5 + offset}deg);
-  }
-  100% {
-    transform: rotateY(${45 + offset + 360}deg) rotateX(${-37.5 +
-    offset +
-    360}deg);
-  }
-`;
+const commonStyle = ({ size }) => {
+  return {
+    position: 'absolute',
+    width: `${size + 1}px`,
+    height: `${size + 1}px`,
+  };
 };
 
-const Sides = styled.div`
-  ${({ noAnimation, offset, speed }) =>
-    !noAnimation &&
-    `animation: ${getAnimation(offset)} ${speed}s linear infinite;`};
-  transform-style: preserve-3d;
-  will-change: transform;
+const Cube = glamorous.div(({ size }) => {
+  return {
+    width: `${size + 1}px`,
+    height: `${size + 1}px`,
+  };
+});
 
-  * {
-    box-sizing: border-box;
-    background-color: ${({ color }) => color.clearer(0.2)};
-    border: ${({ size }) => size / 70}px solid rgba(255, 255, 255, 0.4);
+const getAnimation = (offset: number = 0) => {
+  return css.keyframes({
+    '0%': {
+      transform: `rotateY(${45 + offset}deg) rotateX(${-37.5 + offset}deg)`,
+    },
+    '100%': {
+      transform: `rotateY(${45 + offset + 360}deg) rotateX(${-37.5 +
+        offset +
+        360}deg)`,
+    },
+  });
+};
+
+const Sides = ({ children, color, size, ...rest }) => {
+  const alteredChildren = React.Children.map(children, child => {
+    return React.cloneElement(child, { color, size });
+  });
+
+  return (
+    <SidesDiv size={size} {...rest}>
+      {alteredChildren}
+    </SidesDiv>
+  );
+};
+
+const SidesDiv = glamorous.div(
+  {
+    transformStyle: 'preserve-3d',
+    willChange: 'transform',
+  },
+  ({ size }) => commonStyle({ size }),
+  ({ noAnimation, offset, speed }) => {
+    return noAnimation
+      ? {}
+      : {
+          animation: `${getAnimation(offset)} ${speed}s linear infinite`,
+        };
   }
-`;
+);
 
-const Side = styled.div`
-  transform-origin: 50% 50%;
-  will-change: transform;
-  transform: ${({ rotate }) => rotate} translateZ(${({ size }) => size / 2}px);
-`;
+const Side = glamorous.div(
+  ({ color, rotate, size }) => {
+    return {
+      boxSizing: 'border-box',
+      backgroundColor: `${color.clearer(0.2)()}`,
+      border: `${size / 70}px solid rgba(255, 255, 255, 0.4)`,
+      transformOrigin: '50% 50%',
+      willChange: 'transform',
+      transform: `${rotate} translateZ(${size / 2}px)`,
+      boxShadow: `0px 0px ${SHADOW_SIZE}px ${color()}`,
+    };
+  },
+  ({ size }) => commonStyle({ size })
+);
 
 type Props = {
   size: number,
@@ -57,6 +84,7 @@ type Props = {
 const isSafari =
   typeof navigator !== 'undefined' &&
   /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
 const SHADOW_SIZE = isSafari ? 100 : 150;
 
 export default class GlowCube extends React.PureComponent<Props> {
@@ -80,36 +108,12 @@ export default class GlowCube extends React.PureComponent<Props> {
           noAnimation={noAnimation}
           size={size}
         >
-          <Side
-            style={{ boxShadow: `0px 0px ${SHADOW_SIZE}px ${color()}` }}
-            rotate="rotateX(90deg)"
-            size={size}
-          />
-          <Side
-            style={{ boxShadow: `0px 0px ${SHADOW_SIZE}px ${color()}` }}
-            rotate="rotateX(-90deg)"
-            size={size}
-          />
-          <Side
-            style={{ boxShadow: `0px 0px ${SHADOW_SIZE}px ${color()}` }}
-            rotate="rotateY(0deg)"
-            size={size}
-          />
-          <Side
-            style={{ boxShadow: `0px 0px ${SHADOW_SIZE}px ${color()}` }}
-            rotate="rotateY(-180deg)"
-            size={size}
-          />
-          <Side
-            style={{ boxShadow: `0px 0px ${SHADOW_SIZE}px ${color()}` }}
-            rotate="rotateY(-90deg)"
-            size={size}
-          />
-          <Side
-            style={{ boxShadow: `0px 0px ${SHADOW_SIZE}px ${color()}` }}
-            rotate="rotateY(90deg)"
-            size={size}
-          />
+          <Side rotate="rotateX(90deg)" />
+          <Side rotate="rotateX(-90deg)" />
+          <Side rotate="rotateY(0deg)" />
+          <Side rotate="rotateY(-180deg)" />
+          <Side rotate="rotateY(-90deg)" />
+          <Side rotate="rotateY(90deg)" />
         </Sides>
       </Cube>
     );
