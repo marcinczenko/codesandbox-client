@@ -62,7 +62,7 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
       });
     }
 
-    // Used by createPages() above to register redirects.
+    // Used by createPages() below to register redirects.
     createNodeField({
       node,
       name: 'url',
@@ -111,15 +111,10 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
     const url = edge.node.fields.url;
 
     if (slug.includes('docs/')) {
-      let template;
-      if (slug.includes('docs/')) {
-        template = docsTemplate;
-      }
-
       const createArticlePage = path =>
         createPage({
           path,
-          component: template,
+          component: docsTemplate,
           context: {
             slug,
           },
